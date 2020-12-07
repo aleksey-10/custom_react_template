@@ -1,0 +1,43 @@
+{
+  "name": "fe_program",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.html",
+  "scripts": {
+    "start": "npx parcel ./src/index.html --open",
+    "build": "rm -rf ./dist && parcel build ./src/index.html --public-url ./",
+    "lint:js": "eslint ./src",
+    "lint:css": "stylelint ./src",
+    "lint:html": "linthtml ./src",
+    "lint": "concurrently \"npm run lint:js\" \"npm run lint:css\" \"npm run lint:html\"",
+    "test": "jest ./src/script/main.test.js",
+    "predeploy": "npm run build",
+    "deploy": "sh ./deploy.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@linthtml/linthtml": "^0.4.2",
+    "@mate-academy/eslint-config": "0.0.12",
+    "@mate-academy/linthtml-config": "0.0.1",
+    "@mate-academy/stylelint-config": "0.0.9",
+    "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.15.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^4.3.5",
+    "jest": "^26.6.3",
+    "node-sass": "^4.14.1",
+    "parcel": "^1.12.4",
+    "stylelint": "^13.8.0"
+  }
+}
